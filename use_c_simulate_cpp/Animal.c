@@ -1,15 +1,24 @@
-#include"Animal.h"
-// 父类构造函数实现
-void Animal_Ctor(Animal *this, int age, int weight)
+#include "Animal.h"
+#include <stdio.h>
+//构造函数
+
+void Animal_init(Animal* this, int age, char* sex, void *call_back)
 {
 	this->age = age;
-	this->weight = weight;
+	this->sex = sex;
+	this->v_animal_fun = call_back;
 }
-int Animal_GetAge(Animal *this)
+
+void Animal_empty_fun(void)
+{
+	puts("This is animal virtual fun");
+}
+//获取性别和年龄
+int Animal_get_age(Animal* this)
 {
 	return this->age;
 }
-int Animal_GetWeight(Animal *this)
+char* Animal_get_sex(Animal* this)
 {
-	return this->weight;
+	return this->sex;
 }

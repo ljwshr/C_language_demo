@@ -1,14 +1,19 @@
-#ifndef _ANIMAL_H_
-#define _ANIMAL_H_
-// 定义父类结构
-typedef struct
-{
+#ifndef __ANIMAL__
+#define __ANIMAL__
+//申明类
+typedef struct  {
 	int age;
-	int weight;
+	char* sex;
+	void (*v_animal_fun)();
 } Animal;
-// 构造函数声明
-void Animal_Ctor(Animal *this, int age, int weight);
-// 获取父类属性声明
-int Animal_GetAge(Animal * this);
-int Animal_GetWeight(Animal * this);
+
+//构造函数
+void Animal_init(Animal* this, int age, char* sex, void *call_back);
+
+//获取性别和年龄
+int Animal_get_age(Animal* this);
+char* Animal_get_sex(Animal* this);
+// 虚函数默认实现
+void Animal_empty_fun(void);
+
 #endif

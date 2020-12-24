@@ -1,17 +1,19 @@
-#ifndef _DOG_H_
-#define _DOG_H_
-#include"Animal.h"
-// 定义子类结构
+#ifndef __DOG_H__
+#define __DOG_H__
+#include "Animal.h"
 typedef struct
 {
-	Animal parent; // 第一个位置放置父类结构
-	int legs; // 添加子类自己的属性
+	Animal parent;
+	int leg;
 } Dog;
 
-// 子类构造函数声明
-void Dog_Ctor(Dog *this, int age, int weight, int legs);
-// 子类属性声明
-int Dog_GetAge(Dog * this);
-int Dog_GetWeight(Dog * this);
-int Dog_GetLegs(Dog * this);
+//构造函数
+void Dog_init(Dog* this, int age, char* sex,void (*v_dog_fun),int leg);
+
+//获取相关变量函数
+int Dog_get_age(Dog * this);
+char* Dog_get_sex(Dog * this);
+int Dog_get_leg(Dog * this);
+
+void Dog_v_fun(void);
 #endif

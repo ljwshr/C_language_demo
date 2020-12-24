@@ -1,19 +1,28 @@
 #include "Dog.h"
-// 子类构造函数实现
-void Dog_Ctor(Dog *this, int age, int weight, int legs)
-{ // 首先调用父类构造函数，来初始化从父类继承的数据
-	Animal_Ctor(&this->parent, age, weight); // 然后初始化子类自己的数据
-	this->legs = legs;
-}
-int Dog_GetAge(Dog *this)
-{ // age属性是继承而来，转发给父类中的获取属性函数
-	return Animal_GetAge(&this->parent);
-}
-int Dog_GetWeight(Dog *this)
+#include <stdio.h>
+
+void Dog_init(Dog* this, int age, char* sex, void (*v_dog_fun), int leg)
 {
-	return Animal_GetWeight(&this->parent);
+	Animal_init(&this->parent, age, sex, v_dog_fun);
+	this->leg = leg;
 }
-int Dog_GetLegs(Dog *this)
-{ // 子类自己的属性，直接返回
-	return this->legs;
+
+//获取相关变量函数
+int Dog_get_age(Dog* this)
+{
+	return Animal_get_age(&(this->parent));
+}
+char* Dog_get_sex(Dog* this)
+{
+	return Animal_get_sex(&(this->parent));
+}
+int Dog_get_leg(Dog* this)
+{
+	return this->leg;
+}
+
+// Dog的虚函数
+void Dog_v_fun(void)
+{
+	puts("This is dog virtual fun");
 }
